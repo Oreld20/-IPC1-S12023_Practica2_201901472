@@ -231,7 +231,7 @@ public static ArrayList <Guardado> tiempos = new ArrayList <Guardado>();
 
         if (!txtIntiempo.getText().isEmpty()&&!txtIncosto.getText().isEmpty()&&!txtPrtiempo.getText().isEmpty()&&!txtPrcosto.getText().isEmpty()&&!txtEmtiempo.getText().isEmpty()&&!txtEmcosto.getText().isEmpty()&&!txtSatiempo.getText().isEmpty()&&!txtSlcosto.getText().isEmpty()) {
             
-            Guardado tiempo0= new Guardado(Integer. parseInt(txtIntiempo.getText()), Integer. parseInt(txtPrtiempo.getText()), Integer. parseInt(txtEmtiempo.getText()), Integer. parseInt(txtSatiempo.getText()));
+            Guardado tiempo0= new Guardado(Integer. parseInt(txtIntiempo.getText()), Integer. parseInt(txtPrtiempo.getText()), Integer. parseInt(txtEmtiempo.getText()), Integer. parseInt(txtSatiempo.getText()),Integer. parseInt(txtIncosto.getText()),Integer. parseInt(txtPrcosto.getText()),Integer. parseInt(txtEmcosto.getText()),Integer. parseInt(txtSlcosto.getText()));
             tiempos.add(tiempo0);
             Simulacion pantalla = new Simulacion(tiempos);
             pantalla.setVisible(true);

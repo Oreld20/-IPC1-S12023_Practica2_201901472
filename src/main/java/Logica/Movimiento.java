@@ -10,19 +10,21 @@ public class Movimiento extends Thread {
     private JLabel etiqueta;
     private Simulacion CirculoC;
     private ArrayList <Guardado> tiempos;
+    private int time;
 
-    public Movimiento(JLabel etiqueta, Simulacion Circulo,ArrayList <Guardado> tiempos) {
+    public Movimiento(JLabel etiqueta, Simulacion Circulo,ArrayList <Guardado> tiempos,int time) {
         this.etiqueta = etiqueta;
         this.CirculoC = Circulo;
         this.tiempos=tiempos;
-    }
+        this.time=time;
+   }
     
     @Override
     public void run(){
         int circulox=0;
-        int circuloy;
-        boolean caso=true;
+        int circuloy=0;
             try {
+                sleep(1000*time);
                 while (true) {
                 circulox= CirculoC.getPrimerC().getLocation().x;
                 circuloy=CirculoC.getPrimerC().getLocation().y;

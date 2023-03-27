@@ -2,18 +2,24 @@
 package Interfaces;
 
 import static Interfaces.Menu.tiempos;
+import Logica.Cronometro;
 import Logica.Guardado;
 import Logica.Movimiento;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 public class Simulacion extends javax.swing.JFrame {
     ArrayList <Guardado> tiempos = new ArrayList <Guardado>();
-
+ 
     public Simulacion(ArrayList <Guardado> tiempos) {
         this.tiempos=tiempos;
-    initComponents();   
+        initComponents();  
+        
     }
+
      public JLabel getPrimerC(){
     return PrimerC;
     }
@@ -38,6 +44,10 @@ public class Simulacion extends javax.swing.JFrame {
     return Final;
     }
     
+    public JLabel getetiqueta_tiempo(){
+    return etiqueta_tiempo;
+    }
+    
     
    
 
@@ -55,7 +65,7 @@ public class Simulacion extends javax.swing.JFrame {
         btnReporte = new javax.swing.JButton();
         PrimerC = new javax.swing.JLabel();
         Inicio = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        tiempo_transcurrido = new javax.swing.JLabel();
         Salida = new javax.swing.JLabel();
         Inventario = new javax.swing.JLabel();
         Produccion = new javax.swing.JLabel();
@@ -67,6 +77,7 @@ public class Simulacion extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         bentRegresar1 = new javax.swing.JButton();
+        etiqueta_tiempo = new javax.swing.JLabel();
 
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Produccion");
@@ -84,7 +95,7 @@ public class Simulacion extends javax.swing.JFrame {
                 btnReporteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 30, 140, 40));
+        jPanel1.add(btnReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 140, 40));
 
         PrimerC.setBackground(new java.awt.Color(51, 51, 255));
         PrimerC.setOpaque(true);
@@ -98,11 +109,11 @@ public class Simulacion extends javax.swing.JFrame {
                 InicioActionPerformed(evt);
             }
         });
-        jPanel1.add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 140, 40));
+        jPanel1.add(Inicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 140, 40));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Tiempo transcurrido:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 130, 30));
+        tiempo_transcurrido.setForeground(new java.awt.Color(0, 0, 0));
+        tiempo_transcurrido.setText("Tiempo transcurrido:");
+        jPanel1.add(tiempo_transcurrido, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 130, 30));
 
         Salida.setBackground(new java.awt.Color(153, 0, 51));
         Salida.setOpaque(true);
@@ -159,6 +170,11 @@ public class Simulacion extends javax.swing.JFrame {
         });
         jPanel1.add(bentRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 140, 40));
 
+        etiqueta_tiempo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        etiqueta_tiempo.setForeground(new java.awt.Color(0, 0, 0));
+        etiqueta_tiempo.setText("00:00:00");
+        jPanel1.add(etiqueta_tiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 120, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,14 +202,21 @@ public class Simulacion extends javax.swing.JFrame {
     private void InicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioActionPerformed
 
         PrimerC.setLocation( PrimerC.getLocation().x, PrimerC.getLocation().y);
-        Movimiento circ = new  Movimiento(PrimerC,this,tiempos);
-        circ.start();
+        Movimiento circ = new  Movimiento(PrimerC,this,tiempos,1);
+         circ.start();
+         
+       
+        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_InicioActionPerformed
 
     private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
-        // TODO add your handling code here:
+
+        Cronometro time1 = new Cronometro(etiqueta_tiempo);
+        time1.start();
+
+            // TODO add your handling code here:
     }//GEN-LAST:event_btnReporteActionPerformed
 
     /**
@@ -211,7 +234,7 @@ public class Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel Salida;
     private javax.swing.JButton bentRegresar1;
     private javax.swing.JButton btnReporte;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel etiqueta_tiempo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -219,5 +242,6 @@ public class Simulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel tiempo_transcurrido;
     // End of variables declaration//GEN-END:variables
 }
